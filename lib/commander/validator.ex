@@ -1,4 +1,8 @@
-defmodule Extask.RequestValidator do
+defmodule Commander.Validator do
+  @moduledoc """
+  General module for validating input parameters towards a given changeset.
+  """
+
   alias Ecto.Changeset
 
   def validate(params, changeset_fun) do

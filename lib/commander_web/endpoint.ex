@@ -1,13 +1,13 @@
-defmodule ExtaskWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :extask
+defmodule CommanderWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :commander
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_extask_key",
-    signing_salt: "Bp3sbDsL",
+    key: "_commander_key",
+    signing_salt: "kpXtWlNa",
     same_site: "Lax"
   ]
 
@@ -21,15 +21,14 @@ defmodule ExtaskWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :extask,
+    from: :commander,
     gzip: false,
-    only: ExtaskWeb.static_paths()
+    only: CommanderWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :extask
   end
 
   plug Plug.RequestId
@@ -43,5 +42,5 @@ defmodule ExtaskWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug ExtaskWeb.Router
+  plug CommanderWeb.Router
 end

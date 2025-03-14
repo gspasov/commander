@@ -1,6 +1,6 @@
-defmodule Extask do
+defmodule Commander do
   @moduledoc """
-  Extask keeps the contexts that define your domain
+  Commander keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

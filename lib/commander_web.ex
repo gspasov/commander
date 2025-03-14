@@ -1,12 +1,12 @@
-defmodule ExtaskWeb do
+defmodule CommanderWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use ExtaskWeb, :controller
-      use ExtaskWeb, :html
+      use CommanderWeb, :controller
+      use CommanderWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -21,7 +21,7 @@ defmodule ExtaskWeb do
 
   def router do
     quote do
-      use Phoenix.Router, helpers: false
+      use Phoenix.Router, helpers: true
 
       # Import common connection and controller functions to use in pipelines
       import Plug.Conn
@@ -39,9 +39,7 @@ defmodule ExtaskWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: ExtaskWeb.Layouts]
-
-      use Gettext, backend: ExtaskWeb.Gettext
+        layouts: [html: CommanderWeb.Layouts]
 
       import Plug.Conn
 
@@ -52,9 +50,9 @@ defmodule ExtaskWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: ExtaskWeb.Endpoint,
-        router: ExtaskWeb.Router,
-        statics: ExtaskWeb.static_paths()
+        endpoint: CommanderWeb.Endpoint,
+        router: CommanderWeb.Router,
+        statics: CommanderWeb.static_paths()
     end
   end
 

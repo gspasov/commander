@@ -1,4 +1,4 @@
-defmodule Extask.Application do
+defmodule Commander.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,19 +8,18 @@ defmodule Extask.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      ExtaskWeb.Telemetry,
-      # Extask.Repo,
-      {DNSCluster, query: Application.get_env(:extask, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Extask.PubSub},
-      # Start a worker by calling: Extask.Worker.start_link(arg)
-      # {Extask.Worker, arg},
+      CommanderWeb.Telemetry,
+      {DNSCluster, query: Application.get_env(:commander, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: Commander.PubSub},
+      # Start a worker by calling: Commander.Worker.start_link(arg)
+      # {Commander.Worker, arg},
       # Start to serve requests, typically the last entry
-      ExtaskWeb.Endpoint
+      CommanderWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Extask.Supervisor]
+    opts = [strategy: :one_for_one, name: Commander.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -28,7 +27,7 @@ defmodule Extask.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    ExtaskWeb.Endpoint.config_change(changed, removed)
+    CommanderWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

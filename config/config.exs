@@ -7,20 +7,19 @@
 # General application configuration
 import Config
 
-config :extask,
-  ecto_repos: [Extask.Repo],
+config :commander,
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :extask, ExtaskWeb.Endpoint,
+config :commander, CommanderWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [json: ExtaskWeb.ErrorJSON],
+    formats: [json: CommanderWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Extask.PubSub,
-  live_view: [signing_salt: "s9Xt4Mtz"]
+  pubsub_server: Commander.PubSub,
+  live_view: [signing_salt: "aVWZ5oV8"]
 
 # Configures Elixir's Logger
 config :logger, :console,
