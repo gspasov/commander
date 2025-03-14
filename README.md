@@ -10,20 +10,28 @@ Built with **Elixir** and **Phoenix**, Commander is designed for efficient task 
 
 ## Installation & Setup
 
-1. **Clone the repository:**
+1. **Install Elixir (if missing):**
+    Elixir can easily be install by following [the official tutorial](https://elixir-lang.org/install.html) or through [asdf](https://asdf-vm.com/manage/plugins.html) with the [following elixir plugin](https://github.com/asdf-vm/asdf-elixir)
 
+2. **Install Phoenix (if missing):**
+    Once Elixir has been install you can just run the following command
+    ```sh
+    mix archive.install hex phx_new
+    ```
+
+3. **Clone the repository:**
    ```sh
    git clone https://github.com/gspasov/commander.git
    cd commander
    ```
 
-2. **Install dependencies:**
+4. **Install dependencies:**
 
    ```sh
    mix deps.get
    ```
 
-3. **Start the Phoenix server:**
+5. **Start the Phoenix server:**
    ```sh
    mix phx.server
    ```
