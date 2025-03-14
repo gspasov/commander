@@ -1,6 +1,10 @@
 defmodule Commander.JobProcessor do
   @moduledoc """
-  Context for holding the main 'business' logic
+  Context for holding the main 'business' logic.
+
+  @NOTE/TODO:
+  Commander currently does not take into consideration failed cmd commands.
+  It will execute all of them independent of previous task failure.
   """
 
   require Logger
@@ -42,6 +46,7 @@ defmodule Commander.JobProcessor do
     end
   end
 
+  @spec cmd(Task.t()) :: :ok | :error
   def cmd(%Task{name: name, command: command}) do
     case System.cmd("sh", ["-c", command]) do
       {_response, 0} ->
